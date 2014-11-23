@@ -7,42 +7,9 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.GnuParser;
 import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Option;
-import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
 public class CliExecutor {
-
-	Options options = new Options();
-
-	void createOptions() {
-		options.addOption("opt", false, "options");
-		options.addOption("help", false, "help");
-		options.addOption("f", true, "file");
-		Option opt = new Option("f", "file");
-		opt.setArgs(15);
-		options.addOption(opt);
-	}
-
-	void parse() throws ParseException {
-		String[] arg = { "-help" };
-		HelpFormatter formatter = new HelpFormatter();
-		CommandLineParser parser = new GnuParser();
-		CommandLine cmd = parser.parse(options, arg);
-
-		if (cmd.hasOption("opt")) {
-			System.out.println("jeeej");
-		}
-
-		if (cmd.hasOption("help")) {
-			formatter.printHelp("help", options);
-		}
-
-	}
-
-	void createHelp() {
-
-	}
 
 	public void execute(String[] args) throws ParseException {
 		CommandLineParser commandLineParser = new GnuParser();
