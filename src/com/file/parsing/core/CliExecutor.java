@@ -22,17 +22,15 @@ public class CliExecutor {
 			formatter.printHelp("help", fileCommandOptionsCreator);
 		}
 
-		if (cmd.hasOption("word")) {
-			if (cmd.hasOption("file")) {
-				String wordOptionValue = cmd.getOptionValue("word");
-				String[] fileOptionValues = cmd.getOptionValues("file");
-				Path[] asa = new Path[fileOptionValues.length];
-				for (int i = 0; i < fileOptionValues.length; i++) {
-					asa[i] = Paths.get(fileOptionValues[i]);
-				}
-				new PoolThread().execute(asa, new FileOperationsPattern(
-						wordOptionValue));
+		if (cmd.hasOption("word") && cmd.hasOption("file")) {
+			String wordOptionValue = cmd.getOptionValue("word");
+			String[] fileOptionValues = cmd.getOptionValues("file");
+			Path[] pathToFile = new Path[fileOptionValues.length];
+			for (int i = 0; i < fileOptionValues.length; i++) {
+				pathToFile[i] = Paths.get(fileOptionValues[i]);
 			}
+			new PoolThread().execute(pathToFile, new FileOperationsPattern(
+					wordOptionValue));
 		}
 	}
 
