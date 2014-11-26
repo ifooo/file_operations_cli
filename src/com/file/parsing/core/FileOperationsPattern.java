@@ -4,8 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FileOperationsPattern {
-
-	private static final String REGEXP = "[a-zA-Z]{3,}ia";
+//	private static final String REGEXP = "[a-zA-Z]{3,}ia";
 
 	private String specificWord;
 
